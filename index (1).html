@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Portfolio of Kunchala Ajay Kumar, a full-stack developer showcasing projects, skills, experience and contact information.">
+  <meta name="theme-color" content="#0f766e">
+  <title>Kunchala Ajay Kumar | Full-Stack Developer</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #eef2f7;
+      --surface: #ffffff;
+      --ink: #14213d;
+      --muted: #53627a;
+      --line: #d5deea;
+      --accent: #0f766e;
+      --accent-ink: #ffffff;
+      --soft: #dff1ee;
+      --shadow: 0 18px 50px rgba(20, 33, 61, .09);
+      --display: "Bricolage Grotesque", "Segoe UI", sans-serif;
+      --body: "IBM Plex Sans", "Segoe UI", sans-serif;
+    }
+
+    :root[data-theme="dark"] {
+      color-scheme: dark;
+      --bg: #0e1626;
+      --surface: #16213a;
+      --ink: #e8eefb;
+      --muted: #a3b1cb;
+      --line: #2a3856;
+      --accent: #5eead4;
+      --accent-ink: #0e1626;
+      --soft: #143a40;
+      --shadow: 0 18px 50px rgba(0, 0, 0, .22);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 85px; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font: 16px/1.7 var(--body);
+    }
+    a { color: inherit; }
+    a:focus-visible, button:focus-visible, input:focus-visible,
+    select:focus-visible, textarea:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+    .container { width: min(1080px, calc(100% - 40px)); margin: 0 auto; }
+    .site-header {
+      position: sticky; top: 0; z-index: 10;
+      background: color-mix(in srgb, var(--bg) 92%, transparent);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+    .header-inner {
+      min-height: 72px; display: flex; align-items: center;
+      justify-content: space-between; gap: 18px; flex-wrap: wrap;
+    }
+    .brand {
+      color: var(--ink); text-decoration: none;
+      font: 800 1.2rem var(--display); white-space: nowrap;
+    }
+    .nav-links { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none; font-size: .94rem; font-weight: 600;
+    }
+    .nav-links a:hover, .social-links a:hover { color: var(--accent); }
+    .header-actions { display: flex; align-items: center; gap: 10px; }
+    .theme-button, .hire-button, .button {
+      border-radius: 10px; cursor: pointer; font: 600 .95rem var(--body);
+      transition: transform .18s ease, filter .18s ease;
+    }
+    .theme-button {
+      border: 1px solid var(--line); background: var(--surface);
+      color: var(--ink); padding: 9px 12px;
+    }
+    .hire-button, .button.primary {
+      border: 2px solid var(--accent); background: var(--accent);
+      color: var(--accent-ink); padding: 10px 17px;
+    }
+    .button {
+      display: inline-flex; align-items: center; justify-content: center;
+      text-decoration: none; padding: 11px 18px; border: 2px solid var(--accent);
+    }
+    .button.secondary { color: var(--ink); background: transparent; }
+    .hire-button:hover, .button:hover, .theme-button:hover { transform: translateY(-2px); filter: brightness(1.06); }
+
+    .hero { padding: 92px 0 70px; }
+    .eyebrow {
+      display: inline-block; margin-bottom: 18px; padding: 5px 12px;
+      border-radius: 999px; background: var(--soft); color: var(--accent);
+      font-size: .88rem; font-weight: 700;
+    }
+    h1 {
+      max-width: 850px; margin: 0 0 18px;
+      font: 800 clamp(2.8rem, 8vw, 5.8rem)/1.02 var(--display);
+      letter-spacing: -.045em;
+    }
+    .hero-lead {
+      max-width: 760px; margin: 0 0 14px;
+      font: 700 clamp(1.25rem, 3vw, 1.75rem)/1.35 var(--display);
+    }
+    .hero-description { max-width: 720px; color: var(--muted); margin: 0 0 28px; }
+    .button-row { display: flex; flex-wrap: wrap; gap: 12px; }
+    .quick-facts {
+      display: flex; flex-wrap: wrap; gap: 28px;
+      margin-top: 42px; padding-top: 22px; border-top: 1px solid var(--line);
+      color: var(--muted); font-size: .95rem;
+    }
+    .quick-facts strong { display: block; color: var(--ink); }
+    section { padding: 66px 0; border-top: 1px solid var(--line); }
+    h2 { margin: 0 0 8px; font: 800 clamp(1.8rem, 4vw, 2.5rem)/1.15 var(--display); }
+    .section-intro { max-width: 680px; color: var(--muted); margin: 0 0 30px; }
+    .project-card, .info-card {
+      padding: 28px; border: 1px solid var(--line);
+      border-radius: 18px; background: var(--surface); box-shadow: var(--shadow);
+    }
+    h3 { font-family: var(--display); }
+    .project-card h3 { margin: 0 0 4px; font-size: 1.55rem; }
+    .meta { color: var(--muted); margin: 0 0 18px; font-size: .94rem; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; padding: 0; margin: 0 0 24px; list-style: none; }
+    .chips li { padding: 4px 11px; border-radius: 999px; background: var(--soft); font-size: .86rem; font-weight: 600; }
+    .project-columns { display: grid; grid-template-columns: 1.15fr 1fr; gap: 34px; }
+    .project-columns ul, .info-card ul { padding-left: 20px; margin-top: 0; }
+    .project-columns li, .info-card li { margin-bottom: 9px; }
+    .project-links, .social-links { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 18px; }
+    .project-links a, .social-links a { color: var(--accent); font-weight: 700; }
+    .roles h4 { margin: 0 0 5px; font: 700 1.08rem var(--display); }
+    .hint { color: var(--muted); margin: 0 0 12px; font-size: .9rem; }
+    .role-tabs { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 12px; }
+    .role-tabs button {
+      border: 1px solid var(--line); background: var(--bg); color: var(--ink);
+      border-radius: 8px; padding: 7px 12px; cursor: pointer; font: 600 .9rem var(--body);
+    }
+    .role-tabs button[aria-selected="true"] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+    .role-panel { min-height: 145px; padding: 15px 17px; border: 1px solid var(--line); border-radius: 12px; background: var(--bg); }
+    .role-panel ul { margin: 0; padding-left: 19px; }
+    .role-panel .guard { margin: 10px 0 0; color: var(--muted); font-size: .86rem; }
+    .small-project { margin-top: 18px; }
+    .small-project h3 { margin: 0 0 4px; font-size: 1.25rem; }
+    .skills-list { display: grid; grid-template-columns: 190px 1fr; margin: 0; }
+    .skills-list dt, .skills-list dd { margin: 0; padding: 14px 0; border-bottom: 1px solid var(--line); }
+    .skills-list dt { font-weight: 700; }
+    .skills-list dd { color: var(--muted); }
+    .job {
+      display: grid; grid-template-columns: 240px 1fr; gap: 8px 25px;
+      padding: 20px 0; border-bottom: 1px solid var(--line);
+    }
+    .job h3 { margin: 0 0 3px; font-size: 1.12rem; }
+    .job .org { color: var(--muted); font-size: .94rem; }
+    .job ul { margin: 0; padding-left: 20px; }
+    .two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 35px; }
+    .two-column h3 { margin: 0 0 8px; }
+    .contact-email {
+      display: inline-block; color: var(--accent); font: 800 clamp(1.35rem, 4vw, 2.3rem)/1.25 var(--display);
+      overflow-wrap: anywhere; text-decoration: none;
+    }
+    footer { padding: 28px 0 38px; border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem; }
+
+    dialog {
+      width: min(540px, calc(100% - 28px)); max-height: 90vh; overflow: auto;
+      padding: 0; border: 1px solid var(--line); border-radius: 18px;
+      background: var(--surface); color: var(--ink); box-shadow: var(--shadow);
+    }
+    dialog::backdrop { background: rgba(7, 15, 30, .65); backdrop-filter: blur(3px); }
+    .dialog-content { position: relative; padding: 28px; }
+    .dialog-content h3 { margin: 0 0 6px; font-size: 1.6rem; }
+    .dialog-description { color: var(--muted); margin: 0 0 20px; }
+    .close-button {
+      position: absolute; top: 12px; right: 14px; border: 0; background: transparent;
+      color: var(--muted); font-size: 1.7rem; cursor: pointer;
+    }
+    .form-field { margin-bottom: 14px; }
+    label { display: block; margin-bottom: 5px; font-size: .94rem; font-weight: 700; }
+    input, select, textarea {
+      width: 100%; padding: 11px 12px; border: 1px solid var(--line);
+      border-radius: 9px; background: var(--bg); color: var(--ink); font: inherit;
+    }
+    textarea { min-height: 115px; resize: vertical; }
+    input[aria-invalid="true"], select[aria-invalid="true"], textarea[aria-invalid="true"] { border-color: #d33b3b; }
+    .error { min-height: 18px; margin: 3px 0 0; color: #d33b3b; font-size: .82rem; }
+    .form-status { min-height: 24px; margin: 12px 0 0; font-weight: 600; }
+    .form-status.success { color: #15945b; }
+    .form-status.failure { color: #d33b3b; }
+    .honeypot { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+    .submit-button:disabled { opacity: .65; cursor: wait; }
+    @media (max-width: 850px) {
+      .nav-links { display: none; }
+      .project-columns, .two-column { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 620px) {
+      .container { width: min(100% - 28px, 1080px); }
+      .hero { padding: 65px 0 48px; }
+      section { padding: 50px 0; }
+      .project-card, .info-card { padding: 21px; }
+      .skills-list, .job { grid-template-columns: 1fr; }
+      .skills-list dt { padding-bottom: 0; border-bottom: 0; }
+      .skills-list dd { padding-top: 4px; }
+      .header-inner { padding: 12px 0; }
+      .brand { font-size: 1.05rem; }
+      .theme-button { padding: 8px 9px; }
+      .hire-button { padding: 9px 12px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#home">Ajay Kumar</a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <a class="social-links" href="https://github.com/ajaykumarkunchala" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">GitHub</a>
+        <button class="theme-button" id="themeButton" type="button" aria-label="Toggle colour theme">Theme</button>
+        <button class="hire-button" type="button" data-open-hire>Hire me</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero" style="border-top:0">
+      <div class="container">
+        <span class="eyebrow">Open to fresher opportunities</span>
+        <h1>Kunchala Ajay Kumar</h1>
+        <p class="hero-lead">I build full-stack web applications with React, Node.js, Express and MongoDB.</p>
+        <p class="hero-description">
+          B.Tech Computer Science graduate (2026) from Bapatla Engineering College.
+          My final-year project, HostelEase, is a hostel management platform designed
+          to manage hostel rooms, leave requests and maintenance issues.
+        </p>
+        <div class="button-row">
+          <button class="button primary" type="button" data-open-hire>Hire me</button>
+          <a class="button secondary" href="#projects">Explore my projects</a>
+        </div>
+        <div class="quick-facts">
+          <div><strong>Location</strong>Andhra Pradesh, India</div>
+          <div><strong>Status</strong>Open to fresher roles</div>
+          <div><strong>Email</strong><a href="mailto:ajaykunchala630@gmail.com">ajaykunchala630@gmail.com</a></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <h2>Projects</h2>
+        <p class="section-intro">A selection of academic and practical projects that demonstrate my development and database skills.</p>
+
+        <article class="project-card">
+          <h3>HostelEase: A Digital Hostel Management Platform Using MERN</h3>
+          <p class="meta">Final-year project · 2025–2026 · Team of 4</p>
+          <ul class="chips" aria-label="Technologies used">
+            <li>MongoDB</li><li>Express.js</li><li>React.js</li><li>Node.js</li>
+            <li>Tailwind CSS</li><li>JWT</li><li>Mongoose</li><li>Vercel</li>
+            <li>Render</li><li>MongoDB Atlas</li>
+          </ul>
+
+          <div class="project-columns">
+            <div>
+              <ul>
+                <li>Replaces paper-based hostel records with one web platform for admins, wardens, students and gatekeepers.</li>
+                <li>Protects API routes with JWT authentication, bcrypt password hashing and role-based access control.</li>
+                <li>Supports room and bed allocation, leave approval, maintenance issues, notifications and analytics.</li>
+                <li>Uses security measures including Helmet, CORS, rate limiting and NoSQL injection prevention.</li>
+              </ul>
+              <div class="project-links">
+                <a href="https://hostelease.online" target="_blank" rel="noopener noreferrer">Open live project</a>
+                <a href="https://github.com/ajaykumarkunchala" target="_blank" rel="noopener noreferrer">GitHub profile</a>
+              </div>
+            </div>
+
+            <div class="roles">
+              <h4>HostelEase user roles</h4>
+              <p class="hint">Select a role to see its main capabilities.</p>
+              <div class="role-tabs" role="tablist" aria-label="HostelEase roles">
+                <button type="button" role="tab" id="role-tab-0" aria-controls="role-panel" aria-selected="true">Admin</button>
+                <button type="button" role="tab" id="role-tab-1" aria-controls="role-panel" aria-selected="false" tabindex="-1">Warden</button>
+                <button type="button" role="tab" id="role-tab-2" aria-controls="role-panel" aria-selected="false" tabindex="-1">Student</button>
+                <button type="button" role="tab" id="role-tab-3" aria-controls="role-panel" aria-selected="false" tabindex="-1">Gatekeeper</button>
+              </div>
+              <div class="role-panel" id="role-panel" role="tabpanel" aria-labelledby="role-tab-0"></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="info-card small-project">
+          <h3>Student Registration System</h3>
+          <p class="meta">HTML · CSS · JavaScript · MySQL</p>
+          <ul>
+            <li>A web application for managing student records with a relational MySQL database and SQL queries to add, update and retrieve information.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <h2>Technical Skills</h2>
+        <p class="section-intro">Technologies and tools I have studied and used in projects.</p>
+        <dl class="skills-list">
+          <dt>Frontend</dt><dd>React.js, JavaScript (ES6+), HTML5, CSS3, Tailwind CSS, Vite, React Router, Context API, Axios</dd>
+          <dt>Backend</dt><dd>Node.js, Express.js, REST APIs, JWT authentication, role-based access control, bcrypt, middleware</dd>
+          <dt>Databases</dt><dd>MongoDB, MongoDB Atlas, Mongoose, aggregation, indexing, MySQL, SQL</dd>
+          <dt>Security</dt><dd>Helmet, CORS, rate limiting, NoSQL injection prevention, OWASP Top 10</dd>
+          <dt>Tools &amp; deployment</dt><dd>Git, GitHub, Postman, VS Code, npm, Vercel, Render, Linux, AWS (basics)</dd>
+          <dt>Programming</dt><dd>JavaScript, Python, C, SQL, data structures, object-oriented programming, Pandas, NumPy</dd>
+        </dl>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <h2>Internships</h2>
+        <p class="section-intro">Internship experiences that helped build my web development, cybersecurity and AI foundations.</p>
+
+        <div class="job">
+          <div><h3>Web Development Intern</h3><div class="org">Skill Dzire Technologies</div></div>
+          <ul><li>Built responsive, user-friendly web pages using HTML, CSS and JavaScript.</li></ul>
+        </div>
+        <div class="job">
+          <div><h3>Cyber Security Intern</h3><div class="org">Axlero Solutions</div></div>
+          <ul>
+            <li>Studied OWASP Top 10 vulnerabilities such as SQL injection and XSS, along with mitigation and secure coding techniques.</li>
+            <li>Learned cryptography basics including encryption, hashing and TLS, as well as network security fundamentals.</li>
+          </ul>
+        </div>
+        <div class="job">
+          <div><h3>AI &amp; Machine Learning Intern</h3><div class="org">BIST Technologies</div></div>
+          <ul><li>Gained hands-on exposure to AI and machine learning concepts and basic model building.</li></ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="container two-column">
+        <div>
+          <h2>Education</h2>
+          <h3>B.Tech in Computer Science Engineering</h3>
+          <p>Bapatla Engineering College, Bapatla, Andhra Pradesh</p>
+          <p>2022–2026 · CGPA: 7.2 / 10</p>
+        </div>
+        <div>
+          <h2>Certifications</h2>
+          <ul>
+            <li>JavaScript</li>
+            <li>Data Analytics – Blue Stock</li>
+            <li>Deep Learning with GPUs</li>
+            <li>Cyber Security Workshop</li>
+          </ul>
+          <p><strong>Languages:</strong> English, Telugu and Hindi</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <h2>Let’s talk</h2>
+        <p class="section-intro">I’m looking for a fresher full-stack developer role. Recruiters and hiring teams are welcome to contact me.</p>
+        <a class="contact-email" href="mailto:ajaykunchala630@gmail.com">ajaykunchala630@gmail.com</a>
+        <div class="social-links">
+          <a href="https://www.linkedin.com/in/ajay-kunchala" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="https://github.com/ajaykumarkunchala" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="tel:+916301927819">+91 6301927819</a>
+        </div>
+        <div class="button-row" style="margin-top:22px">
+          <button class="button primary" type="button" data-open-hire>Send a hiring enquiry</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© <span id="year"></span> Kunchala Ajay Kumar. All rights reserved.</div>
+  </footer>
+
+  <dialog id="hireDialog" aria-labelledby="hireTitle">
+    <div class="dialog-content">
+      <button class="close-button" type="button" data-close-dialog aria-label="Close dialog">&times;</button>
+      <h3 id="hireTitle">Hire Ajay</h3>
+      <p class="dialog-description">Share a few details about the opportunity. Your enquiry will be sent to my email inbox.</p>
+
+      <form id="hireForm" novalidate>
+        <div class="form-field">
+          <label for="recruiterName">Your name *</label>
+          <input id="recruiterName" name="name" type="text" autocomplete="name" required minlength="2">
+          <p class="error" id="error-recruiterName"></p>
+        </div>
+        <div class="form-field">
+          <label for="recruiterEmail">Your email *</label>
+          <input id="recruiterEmail" name="email" type="email" autocomplete="email" required>
+          <p class="error" id="error-recruiterEmail"></p>
+        </div>
+        <div class="form-field">
+          <label for="company">Company / organisation *</label>
+          <input id="company" name="company" type="text" autocomplete="organization" required minlength="2">
+          <p class="error" id="error-company"></p>
+        </div>
+        <div class="form-field">
+          <label for="opportunity">Opportunity type *</label>
+          <select id="opportunity" name="opportunity" required>
+            <option value="">Select an opportunity</option>
+            <option>Full-time job</option>
+            <option>Internship</option>
+            <option>Freelance project</option>
+            <option>Other</option>
+          </select>
+          <p class="error" id="error-opportunity"></p>
+        </div>
+        <div class="form-field">
+          <label for="phone">Phone number (optional)</label>
+          <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel">
+          <p class="error" id="error-phone"></p>
+        </div>
+        <div class="form-field">
+          <label for="message">Message *</label>
+          <textarea id="message" name="message" required minlength="20" maxlength="1500" placeholder="Please include the role, responsibilities, location and next steps."></textarea>
+          <p class="error" id="error-message"></p>
+        </div>
+
+        <div class="honeypot" aria-hidden="true">
+          <label for="website">Leave this field empty</label>
+          <input id="website" name="_honey" type="text" tabindex="-1" autocomplete="off">
+        </div>
+
+        <button class="button primary submit-button" id="sendButton" type="submit">Send enquiry</button>
+        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </dialog>
+
+  <script>
+    "use strict";
+
+    // Update this address if you want enquiries sent to a different inbox.
+    const RECEIVER_EMAIL = "ajaykunchala630@gmail.com";
+
+    // Theme toggle
+    const themeButton = document.getElementById("themeButton");
+    themeButton.addEventListener("click", () => {
+      const currentTheme = document.documentElement.dataset.theme;
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const nextTheme = currentTheme ? (currentTheme === "dark" ? "light" : "dark") : (prefersDark ? "light" : "dark");
+      document.documentElement.dataset.theme = nextTheme;
+    });
+
+    // Footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // HostelEase role tabs
+    const roleData = [
+      {
+        items: ["Register students and wardens", "Create rooms and allocate beds", "Manage hostel records and users"],
+        note: "Full access to management screens."
+      },
+      {
+        items: ["Review and approve student leave requests", "Track and resolve maintenance issues", "View occupancy and leave analytics"],
+        note: "Cannot manage other wardens’ settings."
+      },
+      {
+        items: ["Apply for leave and track its status", "Report maintenance issues", "View room details and notifications"],
+        note: "Sees only their own information."
+      },
+      {
+        items: ["Check approved leave passes at the exit", "Record when a student leaves"],
+        note: "Uses the exit portal."
+      }
+    ];
+
+    const roleTabs = [...document.querySelectorAll('[role="tab"]')];
+    const rolePanel = document.getElementById("role-panel");
+
+    function showRole(index, moveFocus = false) {
+      const role = roleData[index];
+
+      roleTabs.forEach((tab, tabIndex) => {
+        const selected = tabIndex === index;
+        tab.setAttribute("aria-selected", String(selected));
+        tab.tabIndex = selected ? 0 : -1;
+        if (selected && moveFocus) tab.focus();
+      });
+
+      rolePanel.setAttribute("aria-labelledby", `role-tab-${index}`);
+      rolePanel.replaceChildren();
+
+      const list = document.createElement("ul");
+      role.items.forEach((item) => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        list.appendChild(li);
+      });
+
+      const note = document.createElement("p");
+      note.className = "guard";
+      note.textContent = role.note;
+
+      rolePanel.append(list, note);
+    }
+
+    roleTabs.forEach((tab, index) => {
+      tab.addEventListener("click", () => showRole(index));
+      tab.addEventListener("keydown", (event) => {
+        let nextIndex = null;
+        if (event.key === "ArrowRight") nextIndex = (index + 1) % roleTabs.length;
+        if (event.key === "ArrowLeft") nextIndex = (index - 1 + roleTabs.length) % roleTabs.length;
+        if (nextIndex !== null) {
+          event.preventDefault();
+          showRole(nextIndex, true);
+        }
+      });
+    });
+    showRole(0);
+
+    // Hire enquiry dialog
+    const hireDialog = document.getElementById("hireDialog");
+    document.querySelectorAll("[data-open-hire]").forEach((button) => {
+      button.addEventListener("click", () => hireDialog.showModal());
+    });
+
+    document.querySelectorAll("[data-close-dialog]").forEach((button) => {
+      button.addEventListener("click", () => hireDialog.close());
+    });
+
+    hireDialog.addEventListener("click", (event) => {
+      if (event.target === hireDialog) hireDialog.close();
+    });
+
+    // Form validation
+    const form = document.getElementById("hireForm");
+    const formStatus = document.getElementById("formStatus");
+    const sendButton = document.getElementById("sendButton");
+
+    const validators = {
+      recruiterName(value) {
+        return value.trim().length >= 2 ? "" : "Please enter your name (at least 2 characters).";
+      },
+      recruiterEmail(value) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value.trim()) ? "" : "Please enter a valid email address.";
+      },
+      company(value) {
+        return value.trim().length >= 2 ? "" : "Please enter your company or organisation.";
+      },
+      opportunity(value) {
+        return value ? "" : "Please select an opportunity type.";
+      },
+      phone(value) {
+        return !value.trim() || /^\+?[0-9][0-9\s-]{6,14}$/.test(value.trim())
+          ? "" : "Enter a valid phone number (7–15 digits).";
+      },
+      message(value) {
+        const length = value.trim().length;
+        if (length < 20) return "Please enter at least 20 characters.";
+        if (length > 1500) return "Please keep your message under 1500 characters.";
+        return "";
+      }
+    };
+
+    function validateField(fieldId) {
+      const field = document.getElementById(fieldId);
+      const error = validators[fieldId](field.value);
+      document.getElementById(`error-${fieldId}`).textContent = error;
+
+      if (error) field.setAttribute("aria-invalid", "true");
+      else field.removeAttribute("aria-invalid");
+
+      return !error;
+    }
+
+    Object.keys(validators).forEach((fieldId) => {
+      const field = document.getElementById(fieldId);
+      field.addEventListener("blur", () => validateField(fieldId));
+      field.addEventListener("input", () => {
+        if (field.hasAttribute("aria-invalid")) validateField(fieldId);
+      });
+      field.addEventListener("change", () => validateField(fieldId));
+    });
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      formStatus.className = "form-status";
+      formStatus.textContent = "";
+
+      let isValid = true;
+      let firstInvalidField = null;
+
+      Object.keys(validators).forEach((fieldId) => {
+        if (!validateField(fieldId)) {
+          isValid = false;
+          if (!firstInvalidField) firstInvalidField = fieldId;
+        }
+      });
+
+      if (!isValid) {
+        document.getElementById(firstInvalidField).focus();
+        return;
+      }
+
+      // Silently ignore submissions caught by the honeypot spam field.
+      if (form.elements["_honey"].value.trim()) return;
+
+      const data = {
+        name: form.elements["name"].value.trim(),
+        email: form.elements["email"].value.trim(),
+        company: form.elements["company"].value.trim(),
+        opportunity: form.elements["opportunity"].value,
+        phone: form.elements["phone"].value.trim() || "Not provided",
+        message: form.elements["message"].value.trim(),
+        _subject: `Portfolio enquiry: ${form.elements["opportunity"].value} from ${form.elements["company"].value.trim()}`,
+        _replyto: form.elements["email"].value.trim(),
+        _template: "table"
+      };
+
+      sendButton.disabled = true;
+      sendButton.textContent = "Sending...";
+
+      try {
+        const response = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(RECEIVER_EMAIL)}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify(data)
+        });
+
+        const result = await response.json();
+
+        if (!response.ok || result.success === "false" || result.success === false) {
+          throw new Error(result.message || "The email service could not accept the enquiry.");
+        }
+
+        form.reset();
+        Object.keys(validators).forEach((fieldId) => {
+          document.getElementById(`error-${fieldId}`).textContent = "";
+          document.getElementById(fieldId).removeAttribute("aria-invalid");
+        });
+
+        formStatus.className = "form-status success";
+        formStatus.textContent = "Your enquiry has been submitted. Thank you for contacting me!";
+      } catch (error) {
+        console.error("Hire form submission error:", error);
+        formStatus.className = "form-status failure";
+        formStatus.textContent = "We could not confirm delivery. Please email ajaykunchala630@gmail.com directly.";
+      } finally {
+        sendButton.disabled = false;
+        sendButton.textContent = "Send enquiry";
+      }
+    });
+  </script>
+</body>
+</html>
